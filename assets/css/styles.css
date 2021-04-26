@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap");
+* {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #858fad;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: url("../images/bg-pattern.svg") #fafbff no-repeat;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+}
+
+main {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 375px;
+}
+
+.outer {
+  background: url("../images/pattern-circles.svg") no-repeat center;
+  text-align: centers;
+  padding: 5rem 0;
+}
+
+.outer h1 {
+  font-size: 1.75rem;
+  color: #293356;
+  font-weight: 800;
+}
+
+.outer p {
+  text-align: center;
+  padding: 1rem 5rem;
+}
+
+.card {
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 3rem 0;
+  border-radius: .75rem;
+}
+
+.options {
+  padding: 0 2rem 2rem;
+  text-align: center;
+}
+
+.pricing h1 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: #293356;
+  display: inline;
+}
+
+.pricing span {
+  margin: auto 0;
+}
+
+.cta {
+  border-top: 1px solid #eaeefb;
+  text-align: center;
+}
+
+.cta ul {
+  padding: 0 0 2rem;
+  list-style-type: none;
+}
+
+.cta ul li {
+  font-size: .8rem;
+  margin: .5rem 0;
+}
+
+.cta ul li img {
+  padding: 0 1rem;
+}
+
+.cta a {
+  text-decoration: none;
+  color: #bdccff;
+  padding: .75rem 3rem;
+  border-radius: 2rem;
+  background: #293356;
+}
+/*# sourceMappingURL=styles.css.map */
