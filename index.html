@@ -1,50 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive pricing component</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <link rel="stylesheet" href="./assets/css/styles.css">
-</head>
-<body>
-  <main>
-    <div class="outer">
-      <h1>Simple, traffic-based pricing</h1>
-      <p>Sign-up for our 30-day trial. No credit card required.</p>
- 
-    </div>
-    <div class="card">
-      <div class="options">
-        <h3>100K Pageviews</h3>
-        <span class="slider"></span>
-        <div class="pricing">
-          <h1>$ 16.00 </h1><span>/month</span>
+    <title>Frontend Mentor | Interactive pricing component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/slider.css">
+  </head>
+  <body>
+    <main>
+      <div class="outer">
+        <h1>Simple, traffic-based pricing</h1>
+        <p>Sign-up for our 30-day trial. No credit card required.</p>
+      </div>
+      <div class="card">
+        <div class="options">
+          <h3 id="views">100K Pageviews</h3>
+          <div class="slider-container">
+            <input
+              id="slider"
+              type="range"
+              min="0"
+              max="500000"
+              step="500"
+              oninput="updateViews(event)"
+            />
+          </div>
+          <div class="pricing">
+            <h1 id="price">$ 16.00</h1>
+            <span>/month</span>
+          </div>
+          <span class="bill-option">
+            <p>Monthly Billing</p>
+            <label class="toggle" for="myToggle">
+              <input
+                class="toggle__input"
+                name=""
+                type="checkbox"
+                id="myToggle"
+              />
+              <div class="toggle__fill"></div>
+            </label>
+            <p>Yearly Billing</p>
+            <p class="discount">-25%</p>
+          </span>
         </div>
-        <span class="bill-option">
-          Monthly Billing Yearly Billing <span class="discount">25% discount</span>
-        </span>
-      </div>
-      
-      <div class="cta">
-        <ul>
-          <li> <img src="./assets/images/icon-check.svg" alt=""> Unlimited websites</li>
-          <li> <img src="./assets/images/icon-check.svg" alt="">100% data ownership</li>
-          <li> <img src="./assets/images/icon-check.svg" alt="">Email reports</li>
-        </ul>
-        
-        <a href="">Start my trial</a>
 
-      </div>
-      
-    </div>
-  </main>
-  
-  
+        <div class="cta">
+          <ul>
+            <li>
+              <img src="./assets/images/icon-check.svg" alt="" /> Unlimited
+              websites
+            </li>
+            <li>
+              <img src="./assets/images/icon-check.svg" alt="" />100% data
+              ownership
+            </li>
+            <li>
+              <img src="./assets/images/icon-check.svg" alt="" />Email reports
+            </li>
+          </ul>
 
-</body>
+          <a href="">Start my trial</a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function updateViews(e) {
+        const perUnit = 6250;
+        let views = document.getElementById('views');
+        let price = document.getElementById('price');
+        let target = e.target;
+        price.innerHTML = "$" +  (target.value/perUnit).toFixed(2);
+        views.innerHTML = formatNum(target.value) + ' PAGEVIEWS';
+      }
+
+      function formatNum(number) {
+        var SI_SYMBOL = ['', 'k', 'M', 'G', 'T', 'P', 'E'];
+        var tier = (Math.log10(Math.abs(number)) / 3) | 0;
+
+        // if zero, we don't need a suffix
+        if (tier == 0) return number;
+
+        // get suffix and determine scale
+        var suffix = SI_SYMBOL[tier];
+        var scale = Math.pow(10, tier * 3);
+
+        // scale the number
+        var scaled = number / scale;
+
+        // format number and add suffix
+        return scaled + suffix;
+      }
+    </script>
+  </body>
 </html>
